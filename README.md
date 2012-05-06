@@ -10,6 +10,7 @@ setup.
 
 1. Asset pipeline instead of `public/javascripts`
 2. Jasmine Headless Webkit for a nicer TDD experience
+3. Vendored Jasmine helpers with jasmine-spec-extras
 
 This repo is the result in progress. One main thing to note right now is
 my `jasmine.yml`:
@@ -28,3 +29,10 @@ If you're using a gem that vendors Underscore and Backbone assets for
 you, you may run into trouble getting Jasmine to see these dependencies
 in the order you want using the `jasmine.yml` examples you see on the
 web. The crucial portion here is specifying `src_files: [ 'application.js' ]` to get the load order you expect from your asset pipline setup.
+
+This config works well with the jasmine-spec-extras gem. Just bundle the
+gem and drop the following in `spec/javascripts/helpers/spec_helper.js.coffee` and you'll have vendored access to sinon and jasmine-jquery:
+
+    #= require jasmine-jquery
+    #= require sinon
+    #= require jasmine-sinon
