@@ -25,6 +25,7 @@ gem 'backbone-rails'
 
 group :test, :development do
   gem 'jasmine-headless-webkit'
+  gem 'jasmine-spec-extras'
 end
 
 # To use ActiveModel has_secure_password
