@@ -6,4 +6,4 @@ src_files: [ 'application.js' ]
 
 spec_dir: spec/javascripts
 spec_files: [ '**/*[Ss]pec.*' ]
-helpers: [ 'helpers/**/*' ]
+helpers: [ 'helpers/**/*', 'fixtures/**/*' ]

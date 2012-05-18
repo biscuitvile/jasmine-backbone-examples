@@ -36,3 +36,18 @@ describe "Todos collection", ->
     expect(@todos.at(0)).toBe @todo3
     expect(@todos.at(1)).toBe @todo2
     expect(@todos.at(2)).toBe @todo1
+
+  describe "when fetching models from the server", ->
+    beforeEach ->
+      @fixture = @fixtures.Todos.valid
+      @server = sinon.fakeServer.create()
+      @server.respondWith "GET", "/todos", @validResponse(@fixture)
+
+    afterEach ->
+      @server.restore()
+
+    it "should make the correct request", ->
+      @todos.fetch()
+      expect(@server.requests.length).toEqual 1
+      expect(@server.requests[0].method).toEqual 'GET'
+      expect(@server.requests[0].url).toEqual '/todos'
